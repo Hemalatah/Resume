@@ -12,48 +12,115 @@ Cameron Pittman
 These are HTML strings. As part of the course, you'll be using JavaScript functions
 replace the %data% placeholder text you see in them.
 */
-var HTMLheaderName = '<h1 id="name">%data%</h1>';
-var HTMLheaderRole = '<span>%data%</span><hr>';
+
+//json objects
+
+var bio = {
+  "name": "Hemalatha Kottaisamy",
+  "role": "Web Developer",
+  "contacts": {
+    "mobile": "408 - 618 - 5877",
+    "email": "khema2010 @gmail.com",
+    "github": "Hemalatah",
+    "twitter": "@Hemalatah",
+    "location": "San Jose"
+  },
+  "welcomeMessage": "Seeking a job to prove the potential in myself",
+  "skills": ["HTML", "CSS", "Javascript", "Jquery"],
+  "biopic": "images/197x148.gif"
+};
+
+var education = {
+  "schools": [{
+      "name": ["Jayaram college of ENGG and Tech", "Syed Ammal Engg college"],
+    "location": ["Trichy, India", "Ramanathapuram, India"],
+    "degree": ["M.E", "B.E"],
+    "majors": ["Comm Sys", "ECE"],
+    "dates": ["2010", "2012"],
+    "url": ["http://www.syedengg.ac.in/", "http://www.jayaramcet.edu.in/index.html"]
+    },
+    {
+
+    }
+  ],
+  "onlineCourses": {
+      "title": "Front End Web Developer",
+      "school": "Udacity",
+      "date": "2015",
+      "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+  }
+};
+
+var work = {
+  "jobs": {
+      "employer": "SAEC", 
+      "title": "Asst.Prof", 
+      "location": "Ramanathapuram, India", 
+      "dates": "Jun\'12 - Nov\'13",
+      "description": "Given lectures in the following topics: Satellite Communication, Microprocessor" 
+    }
+};
+
+var projects = {
+  "projects": {
+        "title": "Cat Clicker",
+        "dates": "Feb\'16",
+        "description": "Organizational library is used to enhance the feature of clicking event using jQuery and Javascript",
+        "images": "images/projectImage.png"
+    }
+};
+
+
+
+var HTMLheaderName = '<h1 id="name">' + bio.name + '</h1>';
+var HTMLheaderRole = '<span>' + bio.role + '</span><hr>';
 
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
-var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
-var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
-var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
-var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
+var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">' + bio.contacts.mobile + '</span></li>';
+var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">' + bio.contacts.email + '</span></li>';
+var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">' + bio.contacts.twitter + '</span></li>';
+var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">' + bio.contacts.github + '</span></li>';
 var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
-var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
+var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">' + bio.contacts.location + '</span></li>';
 
-var HTMLbioPic = '<img src="%data%" class="biopic">';
-var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
+var HTMLbioPic = '<img src="' + bio.biopic + '" class="biopic">';
+var HTMLwelcomeMsg = '<span class="welcome-message">' + bio.welcomeMessage + '</span>';
 
 var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
-var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
+
+var HTMLskills = '<li class="flex-item"><span class="white-text">HTML</span></li><li class="flex-item"><span class="white-text">CSS</span></li><li class="flex-item"><span class="white-text">Javascript</span></li><li class="flex-item"><span class="white-text">jQuery</span></li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
-var HTMLworkEmployer = '<a href="#">%data%';
-var HTMLworkTitle = ' - %data%</a>';
-var HTMLworkDates = '<div class="date-text">%data%</div>';
-var HTMLworkLocation = '<div class="location-text">%data%</div>';
-var HTMLworkDescription = '<p><br>%data%</p>';
+var HTMLworkEmployer = '<a href="#">SAEC';
+var HTMLworkTitle = ' - Asst.Prof</a>';
+var HTMLworkDates = '<div class="date-text">Jun\'12 - Nov\'13</div>';
+var HTMLworkLocation = '<div class="location-text">Ramanathapuram</div>';
+var HTMLworkDescription = '<p><br>Given lectures in the following topics: Satellite Communication, Microprocessor</p>';
 
 var HTMLprojectStart = '<div class="project-entry"></div>';
-var HTMLprojectTitle = '<a href="#">%data%</a>';
-var HTMLprojectDates = '<div class="date-text">%data%</div>';
-var HTMLprojectDescription = '<p><br>%data%</p>';
-var HTMLprojectImage = '<img src="%data%">';
+var HTMLprojectTitle = '<a href="#">Cat Clicker</a>';
+var HTMLprojectDates = '<div class="date-text">Feb\'16</div>';
+var HTMLprojectDescription = '<p><br>Organizational library is used to enhance the feature of clicking event using jQuery and Javascript</p>';
+var HTMLprojectImage = '<img src="images/projectImage.png" style="height: 20px width: 20px">';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
-var HTMLschoolName = '<a href="#">%data%';
-var HTMLschoolDegree = ' -- %data%</a>';
-var HTMLschoolDates = '<div class="date-text">%data%</div>';
-var HTMLschoolLocation = '<div class="location-text">%data%</div>';
-var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+var HTMLschoolName1 = '<a href="#">Jayaram College of Engineering and Technology';
+var HTMLschoolDegree1 = ' -- M.E</a>';
+var HTMLschoolDates1 = '<div class="date-text">Sep\'10 - May\'12</div>';
+var HTMLschoolLocation1 = '<div class="location-text">Trichy, Tamil Nadu, India</div>';
+var HTMLschoolMajor1 = '<em><br>Major: Communication Systems</em>';
+
+var HTMLschoolName2 = '<a href="#">Syed Ammal Engg. College';
+var HTMLschoolDegree2 = ' -- B.E</a>';
+var HTMLschoolDates2 = '<div class="date-text">Sep\'06 - May\'10</div>';
+var HTMLschoolLocation2 = '<div class="location-text">Ramanathapuram, Tamil Nadu, India</div>';
+var HTMLschoolMajor2 = '<em><br>Major: Electronics and Communication Engineering</em>';
 
 var HTMLonlineClasses = '<h3>Online Classes</h3>';
-var HTMLonlineTitle = '<a href="#">%data%';
-var HTMLonlineSchool = ' - %data%</a>';
-var HTMLonlineDates = '<div class="date-text">%data%</div>';
-var HTMLonlineURL = '<br><a href="#">%data%</a>';
+var HTMLonlineTitle = '<a href="https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001">Front End Development- Nanodegree Program';
+var HTMLonlineSchool = ' - Udacity</a>';
+var HTMLonlineDates = '<div class="date-text">2015-2016</div>';
+var HTMLonlineURL = '<br><a href="https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001">www.udacity.com/course/front-end-web-developer-nanodegree--nd001</a>';
 
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
@@ -95,27 +162,49 @@ This is the fun part. Here's where we generate the custom Google Map for the web
 See the documentation below for more details.
 https://developers.google.com/maps/documentation/javascript/reference
 */
-var map;    // declares a global map variable
+var map1, map2,map3;    // declares a global map variable
 
 
 /*
 Start here! initializeMap() is called when page is loaded.
 */
+
 function initializeMap() {
 
   var locations;
 
-  var mapOptions = {
-    disableDefaultUI: true
+
+  var mapOptions1 = {
+    disableDefaultUI: true,
+    center: {lat: 37.279518, lng: -121.867905},
+    zoom: 8
   };
 
   /* 
   For the map to be displayed, the googleMap var must be
   appended to #mapDiv in resumeBuilder.js. 
   */
-  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+  map1 = new google.maps.Map(document.querySelector('#map'), mapOptions1);
 
 
+  var contentString1 = '<h3>' + bio.contacts.location + '</h3>' + 
+  '<p>My Current Location</p>';
+
+
+  var infoWindow1 = new google.maps.InfoWindow({
+      map: map1,
+      content: contentString1
+    });
+
+  var marker1 = new google.maps.Marker({
+      map: map1,
+      position: map1.center,
+      title: bio.contacts.location
+  });
+
+  marker1.addListener('click', function() {
+    infoWindow1.open(map1, marker1);
+  });
   /*
   locationFinder() returns an array of every location string from the JSONs
   written for bio, education, and work.
@@ -126,23 +215,23 @@ function initializeMap() {
     var locations = [];
 
     // adds the single location property from bio to the locations array
-    locations.push(bio.contacts.location);
+    locations.push("San Jose");
 
     // iterates through school locations and appends each location to
     // the locations array. Note that forEach is used for array iteration
     // as described in the Udacity FEND Style Guide: 
     // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
-    education.schools.forEach(function(school){
+    /*education.schools.forEach(function(school){
       locations.push(school.location);
-    });
+    });*/
 
     // iterates through work locations and appends each location to
     // the locations array. Note that forEach is used for array iteration
     // as described in the Udacity FEND Style Guide: 
     // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
-    work.jobs.forEach(function(job){
+    /*work.jobs.forEach(function(job){
       locations.push(job.location);
-    });
+    });*/
 
     return locations;
   }
@@ -163,7 +252,7 @@ function initializeMap() {
     // marker is an object with additional data about the pin for a single location
     var marker = new google.maps.Marker({
       map: map,
-      position: placeData.geometry.location,
+      position: map.center,
       title: name
     });
 
@@ -238,11 +327,11 @@ Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
 //window.addEventListener('resize', function(e) {
   //Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
+  //map.fitBounds(mapBounds);
 //});
